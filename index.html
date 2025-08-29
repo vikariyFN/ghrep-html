@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang = 'en'>
+<head>
+<meta charset='UTF-8'>
+<meta name="viewport"
+	  content = "width=device_width, user_scalable=no, initial_scale=1.0, maximum_scale=1.0, minimum_scale=1.0">
+<meta http-equip = "X-UA-Compatible" content = "ie=edge">
+<title>Page</title>
+<style>
+#main{
+	background-color = blue;
+}
+#buy{
+	background-color = yellow;
+}
+#buy:hover{
+	background-color = dark yellow;
+}
+</style>
+</head>
+<body>
+
+<div id='main'>
+<h3>Online shop</h3>
+<p>pizza buy</p>
+<button id="buy">BUY</button>
+</div>
+
+<form id="form">
+	
+<input id="login"></input>
+<input id="phone"></input>
+<input id="pass"></input>
+<button id="order">Order</button>
+
+</form>
+
+
+<script src="https://telegram.org/js/telegram-web-app.js?59">
+
+let tg = window.Telegram.WebApp;
+let buy = document.getElementById('buy');
+let order = document.getElementById('order');
+
+tg.expand()
+
+buy.addEventListener('click', () => {
+	getElementById('main').style.display = "none";
+	getElementById('form').style.display = "block";
+	getElementById('login').innerHTML = tg.initDataUnsafe.user.name
+});
+
+order.addEventListener('click', () => {
+	login = getElementById('login').value
+	phone = getElementById('phone').value
+	pass = getElementById('pass').value
+	if (login.length < 4) {
+		getElementById('login').innerHTML = "Uncorrect login"
+		return;
+	}
+	if (phone.length < 3) {
+		getElementById('phone').innerHTML = "Uncorrect phone"
+		return;
+	}
+	if (pass.length < 5) {
+		getElementById('pass').innerHTML = 'Uncorrect password'
+		return;
+	}
+
+	data = {
+		login: login,
+		phone: phone,
+		password: pass
+	}
+
+	tg.sendData(JSON.stringify(data))
+	tg.close()
+
+});
+</script>
+</body>
+
