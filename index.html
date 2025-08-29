@@ -13,7 +13,9 @@ body{
 #main{
 	width: 300px;
 	height: 300px;
-	background-color: var(--tg-theme-bg-color);
+	position: 
+	background-color: var(--tg-theme-secondary-bg-color);
+
 }
 #buy{
 	background-color = yellow;
@@ -24,6 +26,7 @@ body{
 #form{
 	display: none;
 	background-color: var(--tg-theme-bg-color);
+	c
 }
 </style>
 </head>
@@ -55,25 +58,25 @@ let order = document.getElementById('order');
 tg.expand()
 
 buy.addEventListener('click', () => {
-	getElementById('main').style.display = "none";
-	getElementById('form').style.display = "block";
-	getElementById('login').value = tg.initDataUnsafe.first_name
+	document.getElementById('main').style.display = "none";
+	document.getElementById('form').style.display = "block";
+	document.getElementById('login').value = tg.initDataUnsafe.first_name
 });
 
 order.addEventListener('click', () => {
-	login = getElementById('login').value
-	phone = getElementById('phone').value
-	pass = getElementById('pass').value
+	login = document.getElementById('login').value
+	phone = document.getElementById('phone').value
+	pass = document.getElementById('pass').value
 	if (login.length < 4) {
-		getElementById('login').value = "Uncorrect login"
+		document.getElementById('login').value = "Uncorrect login"
 		return;
 	}
 	if (phone.length < 3) {
-		getElementById('phone').value = "Uncorrect phone"
+		document.getElementById('phone').value = "Uncorrect phone"
 		return;
 	}
 	if (pass.length < 5) {
-		getElementById('pass').value = 'Uncorrect password'
+		document.getElementById('pass').value = 'Uncorrect password'
 		return;
 	}
 
