@@ -7,14 +7,23 @@
 <meta http-equip = "X-UA-Compatible" content = "ie=edge">
 <title>Page</title>
 <style>
+body{
+	background-color: var(--tg-theme-bg-color);
+}
 #main{
-	background-color = blue;
+	width: 300px;
+	height: 300px;
+	background-color: var(--tg-theme-bg-color);
 }
 #buy{
 	background-color = yellow;
 }
 #buy:hover{
 	background-color = dark yellow;
+}
+#form{
+	display: none;
+	background-color: var(--tg-theme-bg-color);
 }
 </style>
 </head>
@@ -28,16 +37,17 @@
 
 <form id="form">
 	
-<input id="login"></input>
-<input id="phone"></input>
-<input id="pass"></input>
+<input id="login"></input><br />
+<input id="phone"></input><br />
+<input id="pass"></input><br />
 <button id="order">Order</button>
 
 </form>
 
 
 <script src="https://telegram.org/js/telegram-web-app.js?59">
-
+</script>
+<script>
 let tg = window.Telegram.WebApp;
 let buy = document.getElementById('buy');
 let order = document.getElementById('order');
@@ -47,7 +57,7 @@ tg.expand()
 buy.addEventListener('click', () => {
 	getElementById('main').style.display = "none";
 	getElementById('form').style.display = "block";
-	getElementById('login').innerHTML = tg.initDataUnsafe.user.name
+	getElementById('login').value = tg.initDataUnsafe.first_name
 });
 
 order.addEventListener('click', () => {
@@ -55,15 +65,15 @@ order.addEventListener('click', () => {
 	phone = getElementById('phone').value
 	pass = getElementById('pass').value
 	if (login.length < 4) {
-		getElementById('login').innerHTML = "Uncorrect login"
+		getElementById('login').value = "Uncorrect login"
 		return;
 	}
 	if (phone.length < 3) {
-		getElementById('phone').innerHTML = "Uncorrect phone"
+		getElementById('phone').value = "Uncorrect phone"
 		return;
 	}
 	if (pass.length < 5) {
-		getElementById('pass').innerHTML = 'Uncorrect password'
+		getElementById('pass').value = 'Uncorrect password'
 		return;
 	}
 
